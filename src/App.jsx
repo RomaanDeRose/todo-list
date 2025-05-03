@@ -4,24 +4,13 @@ import { Toaster } from "react-hot-toast";
 import { LuPlus } from "react-icons/lu";
 import "./App.css";
 import Tasks from "./components/Tasks";
+import FormTask from "./components/FormTask";
 
 function App() {
-  const { tasks, addTask, editTask } = useContext(TasksContext);
-  const [name, setName] = useState("");
+  const { tasks, editTask } = useContext(TasksContext);
+  const [openForm, setOpenForm] = useState(false);
   const [idEdit, setIdEdit] = useState(null);
   const [nameEdit, setNameEdit] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    addTask({
-      id: Math.floor(Math.random() * 1000),
-      name: name,
-      completed: false,
-    });
-
-    setName("");
-  };
 
   const handleSubmitEdit = (e) => {
     e.preventDefault();
@@ -51,7 +40,10 @@ function App() {
       </p>
       <div className="w-[90%] max-w-3xl mx-auto mt-18 mb-8">
         <div className="flex justify-between">
-          <button className="bg-blue-500 p-2 rounded-md cursor-pointer transition-all hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/25">
+          <button
+            className="bg-blue-500 p-2 rounded-md cursor-pointer transition-all hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/25"
+            onClick={() => setOpenForm(true)}
+          >
             <LuPlus size={34} />
           </button>
           <div>
@@ -78,15 +70,7 @@ function App() {
         <span className="text-3xl font-extrabold">{totalTasks}</span>
       </p> */}
       <Tasks idEdit={idEdit} setIdEdit={setIdEdit} />
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Título..."
-          className="border-2 border-amber-600 focus:outline-none"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </form>
+      {openForm && <FormTask open={setOpenForm} />}
       {idEdit && (
         <form onSubmit={handleSubmitEdit}>
           <input
