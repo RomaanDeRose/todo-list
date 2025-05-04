@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { TasksContext } from "./context/TasksContext";
 import { Toaster } from "react-hot-toast";
 import { LuPlus } from "react-icons/lu";
-import "./App.css";
 import Tasks from "./components/Tasks";
 import FormTask from "./components/FormTask";
 

@@ -13,7 +13,6 @@ function TaskContainer({ task, children, idEdit, setIdEdit }) {
         task.id === idEdit && "scale-105"
       }`}
     >
-      <div className="absolute -top-2.5 -left-2.5 w-6 h-6 rounded-full bg-amber-300 "></div>
       {children}
       <div className="flex gap-2.5">
         <Checkbox

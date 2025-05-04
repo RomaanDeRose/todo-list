@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { TasksContext } from "../context/TasksContext";
+import { colorCategory } from "../utils/colorCategory";
 
 function FormTask({ open }) {
   const { addTask } = useContext(TasksContext);
@@ -28,7 +29,12 @@ function FormTask({ open }) {
       </h2>
       <form onSubmit={handleSubmit} className="w-sm">
         <div className="w-full flex gap-2">
-          <div className="w-[60%] bg-[#181818] flex justify-between items-center gap-2 px-4 py-3.5 rounded-lg border-2 border-[#dddddd]/10 shadow-md shadow-black/30 overflow-hidden">
+          <div className="relative w-[60%] bg-[#181818] flex justify-between items-center gap-2 px-4 py-3.5 rounded-lg border-2 border-[#dddddd]/10 shadow-md shadow-black/30 overflow-hidden">
+            <div
+              className={`absolute -top-2.5 -left-2.5 w-6 h-6 rounded-full ${colorCategory(
+                category
+              )}`}
+            ></div>
             <input
               type="text"
               placeholder="Título..."
@@ -48,7 +54,7 @@ function FormTask({ open }) {
           >
             <option value="Personal">Personal</option>
             <option value="Trabajo">Trabajo</option>
-            <option value="Estudio">Estudio</option>
+            <option value="Estudios">Estudios</option>
             <option value="Deporte">Deporte</option>
             <option value="Entretenimiento">Entretenimiento</option>
             <option value="Otra">Otra</option>
