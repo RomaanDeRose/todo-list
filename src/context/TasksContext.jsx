@@ -53,6 +53,8 @@ function TasksContextProvider({ children }) {
     dispatch({ type: "COMPLETE TASK", payload: id });
   };
 
+  const tasksCompleted = tasks.filter((task) => task.completed);
+
   const totalTasks = tasks.length;
 
   useEffect(() => {
@@ -63,7 +65,15 @@ function TasksContextProvider({ children }) {
 
   return (
     <TasksContext.Provider
-      value={{ tasks, totalTasks, addTask, removeTask, editTask, completeTask }}
+      value={{
+        tasks,
+        addTask,
+        removeTask,
+        editTask,
+        completeTask,
+        totalTasks,
+        tasksCompleted,
+      }}
     >
       {children}
     </TasksContext.Provider>
