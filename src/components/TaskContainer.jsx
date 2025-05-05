@@ -3,9 +3,15 @@ import { TasksContext } from "../context/TasksContext";
 import Checkbox from "./Checkbox";
 import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 function TaskContainer({ task, children, idEdit, setIdEdit }) {
   const { removeTask, completeTask } = useContext(TasksContext);
+
+  const handleRemove = (id) => {
+    removeTask(id);
+    toast.error("Tarea eliminada");
+  };
 
   return (
     <div
@@ -34,7 +40,7 @@ function TaskContainer({ task, children, idEdit, setIdEdit }) {
           } ${
             task.id === idEdit && "grayscale-100 hover:grayscale-100"
           } grayscale-45 transition-all hover:grayscale-0`}
-          onClick={() => removeTask(task.id)}
+          onClick={() => handleRemove(task.id)}
           disabled={task.id === idEdit ? true : false}
         >
           <FaTrash size={13} className="text-red-500" />

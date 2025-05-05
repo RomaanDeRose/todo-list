@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { TasksContext } from "../context/TasksContext";
 import { colorCategory } from "../utils/colorCategory";
+import toast from "react-hot-toast";
 
 function FormTask({ open }) {
   const { addTask } = useContext(TasksContext);
@@ -19,6 +20,7 @@ function FormTask({ open }) {
 
     setTitle("");
 
+    toast.success("Tarea agregada");
     open(false);
   };
 
