@@ -15,7 +15,10 @@ function ViewCompletedTask() {
         {tasksCompleted.length === 0 && <p>Completa tus tareas!</p>}
         {tasksCompleted.length > 0 &&
           tasksCompleted.map((taskCompleted) => (
-            <div className="w-full flex items-center gap-1.5 hover:bg-gray-200 p-0.5 py-1 rounded">
+            <div
+              key={taskCompleted.id}
+              className="w-full flex items-center gap-1.5 hover:bg-gray-200 p-0.5 py-1 rounded"
+            >
               <div className="size-4.5 flex items-center bg-green-200 rounded">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
