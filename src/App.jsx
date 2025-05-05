@@ -70,10 +70,6 @@ function App() {
           </div>
         </div>
       </div>
-      {/* <p className="text-orange-400 text-2xl font-ligth my-2">
-        Total de tareas:{" "}
-        <span className="text-3xl font-extrabold">{totalTasks}</span>
-      </p> */}
       <Tasks category={categoryView} idEdit={idEdit} setIdEdit={setIdEdit} />
       {openForm && <FormTask open={setOpenForm} />}
       {idEdit && (
