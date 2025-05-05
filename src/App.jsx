@@ -7,6 +7,8 @@ import FormTask from "./components/FormTask";
 
 function App() {
   const { tasks, editTask } = useContext(TasksContext);
+
+  const [categoryView, setCategoryView] = useState("Todas");
   const [openForm, setOpenForm] = useState(false);
   const [idEdit, setIdEdit] = useState(null);
   const [nameEdit, setNameEdit] = useState("");
@@ -51,12 +53,14 @@ function App() {
             </label>
             <select
               name="category"
+              value={categoryView}
+              onChange={(e) => setCategoryView(e.target.value)}
               className="h-full text-blue-500 font-medium border-2 border-blue-500 rounded-md px-0.5 cursor-pointer focus:outline-none"
             >
               <option value="Todas">Todas</option>
               <option value="Personal">Personal</option>
               <option value="Trabajo">Trabajo</option>
-              <option value="Estudio">Estudio</option>
+              <option value="Estudios">Estudios</option>
               <option value="Deporte">Deporte</option>
               <option value="Entretenimiento">Entretenimiento</option>
               <option value="Otra">Otra</option>
@@ -68,7 +72,7 @@ function App() {
         Total de tareas:{" "}
         <span className="text-3xl font-extrabold">{totalTasks}</span>
       </p> */}
-      <Tasks idEdit={idEdit} setIdEdit={setIdEdit} />
+      <Tasks category={categoryView} idEdit={idEdit} setIdEdit={setIdEdit} />
       {openForm && <FormTask open={setOpenForm} />}
       {idEdit && (
         <form onSubmit={handleSubmitEdit}>
