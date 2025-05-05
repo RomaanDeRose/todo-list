@@ -27,19 +27,13 @@ function TaskContainer({ task, children, idEdit, setIdEdit }) {
           completeTask={completeTask}
         />
         <button
-          className={`bg-indigo-200 text-white p-2 rounded cursor-pointer ${
-            task.id === idEdit ? "grayscale-0" : "grayscale-45"
-          } transition-all hover:grayscale-0 `}
+          className={`bg-indigo-200 text-white p-2 rounded grayscale-50 cursor-pointer  transition-all hover:grayscale-0 `}
           onClick={() => setIdEdit(task.id)}
         >
           <FaEdit size={13} className="text-indigo-600" />
         </button>
         <button
-          className={`bg-red-200 text-white p-2 rounded ${
-            task.id !== idEdit ? "cursor-pointer" : "cursor-no-drop"
-          } ${
-            task.id === idEdit && "grayscale-100 hover:grayscale-100"
-          } grayscale-45 transition-all hover:grayscale-0`}
+          className={`bg-red-200 text-white p-2 rounded grayscale-45 cursor-pointer transition-all hover:grayscale-0`}
           onClick={() => handleRemove(task.id)}
           disabled={task.id === idEdit ? true : false}
         >

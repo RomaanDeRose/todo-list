@@ -20,7 +20,7 @@ function Checkbox({ id, completed, completeTask }) {
             completed ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="w-full h-full bg-green-100 rounded-sm flex items-center justify-center">
+          <div className="w-full h-full bg-green-200 rounded-sm flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-10 w-10 text-green-500"

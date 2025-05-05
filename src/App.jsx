@@ -1,36 +1,15 @@
-import { useContext, useEffect, useState } from "react";
-import { TasksContext } from "./context/TasksContext";
+import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { LuPlus } from "react-icons/lu";
 import Tasks from "./components/Tasks";
 import FormTask from "./components/FormTask";
 import ViewCompletedTask from "./components/ViewCompletedTasks";
+import EditFormTask from "./components/EditFormTask";
 
 function App() {
-  const { tasks, editTask } = useContext(TasksContext);
-
   const [categoryView, setCategoryView] = useState("Todas");
   const [openForm, setOpenForm] = useState(false);
   const [idEdit, setIdEdit] = useState(null);
-  const [nameEdit, setNameEdit] = useState("");
-
-  const handleSubmitEdit = (e) => {
-    e.preventDefault();
-
-    editTask(idEdit, { name: nameEdit });
-
-    setIdEdit(null);
-    setNameEdit("");
-  };
-
-  useEffect(() => {
-    if (idEdit) {
-      const name = tasks.filter((task) => task.id === idEdit)[0].name;
-      setNameEdit(name);
-    } else {
-      setNameEdit("");
-    }
-  }, [tasks, idEdit]);
 
   return (
     <div className="relative w-full h-screen text-white pt-10">
@@ -72,17 +51,7 @@ function App() {
       </div>
       <Tasks category={categoryView} idEdit={idEdit} setIdEdit={setIdEdit} />
       {openForm && <FormTask open={setOpenForm} />}
-      {idEdit && (
-        <form onSubmit={handleSubmitEdit}>
-          <input
-            type="text"
-            placeholder="Nuevo título..."
-            className="border-2 border-rose-600 focus:outline-none"
-            value={nameEdit}
-            onChange={(e) => setNameEdit(e.target.value)}
-          />
-        </form>
-      )}
+      {idEdit && <EditFormTask idEdit={idEdit} setIdEdit={setIdEdit} />}
       <Toaster position="top-right" />
     </div>
   );
