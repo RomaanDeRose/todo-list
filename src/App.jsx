@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { LuPlus } from "react-icons/lu";
 import Tasks from "./components/Tasks";
 import FormTask from "./components/FormTask";
+import ViewCompletedTask from "./components/ViewCompletedTasks";
 
 function App() {
   const { tasks, editTask } = useContext(TasksContext);
@@ -32,7 +33,8 @@ function App() {
   }, [tasks, idEdit]);
 
   return (
-    <div className="w-full h-screen text-white pt-10">
+    <div className="relative w-full h-screen text-white pt-10">
+      <ViewCompletedTask />
       <h1 className="text-blue-500 text-6xl font-extrabold text-center">
         Todo List!
       </h1>
