@@ -15,7 +15,9 @@ function TaskContainer({ task, children, idEdit, setIdEdit }) {
 
   return (
     <div
-      className={`relative w-62 bg-[#181818] flex justify-between items-center gap-2 px-4 py-3.5 rounded-lg border-2 border-[#dddddd]/10 shadow-md shadow-black/30 overflow-hidden ${
+      className={`relative w-62 ${
+        task.completed ? "bg-white/25" : "bg-[#181818]"
+      } flex justify-between items-center gap-2 px-4 py-3.5 rounded-lg border-2 border-[#dddddd]/10 shadow-md shadow-black/30 overflow-hidden ${
         task.id === idEdit && "scale-105"
       }`}
     >
@@ -27,7 +29,9 @@ function TaskContainer({ task, children, idEdit, setIdEdit }) {
           completeTask={completeTask}
         />
         <button
-          className={`bg-indigo-200 text-white p-2 rounded grayscale-50 cursor-pointer  transition-all hover:grayscale-0 `}
+          className={`bg-indigo-200 text-white p-2 rounded grayscale-50 cursor-pointer  transition-all hover:grayscale-0 ${
+            task.completed && "hidden"
+          }`}
           onClick={() => setIdEdit(task.id)}
         >
           <FaEdit size={13} className="text-indigo-600" />

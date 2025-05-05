@@ -9,7 +9,10 @@ function Task({ task, ...props }) {
           task.category
         )}`}
       ></div>
-      <p className="w-22 truncate mr-4" title={task.title}>
+      <p
+        className={`w-22 ${task.completed && "line-through"} truncate mr-4`}
+        title={task.title}
+      >
         {task.title}
       </p>
     </TaskContainer>
